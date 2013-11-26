@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xdb="http://exist-db.org/ant" name="eXistExample-1" basedir="." default="RunXQuery">
+  <!-- -->
+    <description>Examples of using eXist's Ant extensions</description>
+  <!-- -->
+  <!-- ================================================================== -->
+  <!-- BASE INFORMATION: -->
+  <!-- -->
+    <property name="AntContribDir" value="C:\ant-contrib"/>
+  <!-- -->
+    <property name="BaseUri" value="xmldb:exist://localhost:8080/exist/xmlrpc/db/"/>
+    <property name="Username" value="admin"/>
+    <property name="Password" value="secret"/>
+  <!-- -->
+  <!-- ================================================================== -->
+  <!-- SETUP: -->
+  <!-- -->
+  <!-- Get EXIST_HOME and check if defined: -->
+    <property environment="Env"/>
+    <fail unless="Env.EXIST_HOME">Environment variable EXIST_HOME not set</fail>
+  <!-- -->
+  <!-- Install the eXist tasks: -->
+    <path id="classpath.core">
+        <fileset dir="${Env.EXIST_HOME}/lib/core">
+            <include name="*.jar"/>
+        </fileset>
+        <pathelement path="${Env.EXIST_HOME}/exist.jar"/>
+        <pathelement path="${Env.EXIST_HOME}/exist-optional.jar"/>
+        <pathelement path="${Env.EXIST_HOME}"/>
+    </path>
+    <typedef resource="org/exist/ant/antlib.xml" uri="http://exist-db.org/ant">
+        <classpath refid="classpath.core"/>
+    </typedef>
+  <!-- -->
+  <!-- Install ant-contrib: -->
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="${AntContribDir}\ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+  <!-- -->
+  <!-- ================================================================== -->
+  <!-- ListMainCollections - List all the collection on the /db level: -->
+  <!-- -->
+    <target name="ListMainCollections" description="Lists all collection in /db">
+        <xdb:list uri="${BaseUri}" user="${Username}" password="${Password}" collections="true" outputproperty="Collections"/>
+        <echo>Main collections: ${Collections}</echo>
+    </target>
+  <!-- -->
+  <!-- ================================================================== -->
+  <!-- BackupShutdown - Performs a full backup and then shutdown eXist: -->
+  <!-- -->
+    <target name="BackupShutdown" description="Backup the full database and shutdown">
+        <delete dir="backup"/>
+        <mkdir dir="backup"/>
+        <xdb:backup uri="${BaseUri}" user="${Username}" password="${Password}" dir="backup"/>
+        <zip destfile="backup.zip" basedir="backup"/>
+        <delete dir="backup"/>
+        <xdb:shutdown uri="${BaseUri}" user="${Username}" password="${Password}"/>
+    </target>
+  <!-- -->
+  <!-- ================================================================== -->
+  <!-- Iterate: Iterate over the full database structure -->
+  <!-- -->
+    <target name="SeparateBackups" description="Make separate backups of all subcollections of /db">
+        <xdb:list uri="${BaseUri}" user="${Username}" password="${Password}" collections="true" outputproperty="SubCollections"/>
+        <echo>Subcollections to backup: ${SubCollections}</echo>
+        <foreach list="${SubCollections}" param="SubCollection" target="BackupCollection"/>
+    </target>
+  <!-- -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- -->
+    <target name="BackupCollection">
+        <echo>Backup of /db/${SubCollection}</echo>
+        <property name="BackupTempDir" value="backup-${SubCollection}"/>
+        <delete dir="${BackupTempDir}"/>
+        <mkdir dir="${BackupTempDir}"/>
+        <xdb:backup uri="${BaseUri}/${SubCollection}" user="${Username}" password="${Password}" dir="${BackupTempDir}"/>
+        <zip destfile="backup-${SubCollection}.zip" basedir="${BackupTempDir}"/>
+        <delete dir="${BackupTempDir}"/>
+    </target>
+  <!-- -->
+  <!-- ================================================================== -->
+  <!-- RunXQuery -->
+  <!-- -->
+    <target name="RunXQuery" description="Run an XQuery from Ant">
+        <xdb:xquery uri="${BaseUri}" user="${Username}" password="${Password}" outputproperty="QueryOutput" query="system:get-exist-home()"/>
+        <echo>Query result: ${QueryOutput}</echo>
+    </target>
+  <!-- -->
+</project>

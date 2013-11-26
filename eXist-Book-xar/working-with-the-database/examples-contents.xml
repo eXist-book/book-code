@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eXistBookExamplesContents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../book-browser/examples-contents.xsd" chapter="4">
+    <Title>Working with the database</Title>
+  <!-- -->
+    <Example href="show-uri-encoding.xql">
+        <Title>Show the URI encoding of a name</Title>
+    </Example>
+  <!-- -->
+    <Example href="show-collection-use.xql">
+        <Title>Show the usage of the collection function</Title>
+    </Example>
+  <!-- -->
+    <Example href="" rest="true" show-source="false">
+        <Title>Example of a GET REST request on a collection</Title>
+    </Example>
+  <!-- -->
+    <Example href="put-request.xql">
+        <Title>Store a file in the database using a PUT request</Title>
+        <Description>The file will be stored in /db/apps/eXist-book/data/put-example.xml</Description>
+        <AdditionalSource href="../data/put-example.xml"/>
+    </Example>
+  <!-- -->
+    <Example href="delete-request.xql">
+        <Title>Delete a file in the database using a DELETE request</Title>
+        <Description>The file deleted is the same file as used in the PUT example: /db/apps/eXist-book/data/put-example.xml</Description>
+    </Example>
+  <!-- -->
+    <Example href="post-request.xql">
+        <Title>Fire an extended query POST request at the database</Title>
+    </Example>
+  <!-- -->
+    <Example href="update-document-1.xql">
+        <Title>Update a document using eXistXQuery update extensions</Title>
+        <Description>The file changed is: /db/apps/eXist-book/data/update-resource.xml</Description>
+        <AdditionalSource href="../data/update-resource.xml"/>
+    </Example>
+  <!-- -->
+  <!-- -->
+    <Example href="traverse.xql">
+        <Title>Traverse the book examples using calls from the xmldb extension module</Title>
+    </Example>
+  <!-- -->
+</eXistBookExamplesContents>

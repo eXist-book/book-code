@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns="http://exist-db.org/collection-config/1.0">
+    <index xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <create qname="tei:name" type="xs:string"/>
+        <ngram qname="tei:p"/>
+        <lucene>
+            <text qname="tei:p"/>
+        </lucene>
+    </index>
+</collection>

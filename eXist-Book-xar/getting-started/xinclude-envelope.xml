@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XIncludeEnvelope xmlns:xi="http://www.w3.org/2001/XInclude">
+    <XIncludeContent>This element was included by the XInclude processing in eXist. Yes!</XIncludeContent>
+    <results timestamp="2013-04-19T11:53:29.958+02:00">
+        <message>Hello XQuery</message>
+    </results>
+</XIncludeEnvelope>

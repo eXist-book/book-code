@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repo:meta xmlns="http://exist-db.org/xquery/repo" xmlns:repo="http://exist-db.org/xquery/repo">
+    <repo:description>Additional code and demos for use with the O'Reilly eXist book</repo:description>
+    <repo:author>Erik Siegel, Adam Retter</repo:author>
+    <repo:website/>
+    <repo:status>Under development</repo:status>
+    <repo:license/>
+    <repo:copyright>false</repo:copyright>
+    <repo:type>application</repo:type>
+    <repo:target>eXist-book</repo:target>
+    <repo:prepare/>
+    <repo:finish>post-install.xql</repo:finish>
+    <repo:permissions user="admin" password="" group="dba" mode="rw-rw-r--"/>
+    <deployed>2013-04-23T12:32:11.256+02:00</deployed>
+</repo:meta>

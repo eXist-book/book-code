@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <title>Hello XForms</title>
+    <!-- The XForms data model: -->
+        <xf:model id="xforms-data-model">
+            <xf:submission action="hello-xforms-submit.xql" id="submit-id" method="post"/>
+            <xf:instance xmlns="">
+                <Data>
+                    <Name/>
+                    <Date/>
+                </Data>
+            </xf:instance>
+            <xf:bind id="NameBind" nodeset="/Data/Name" required="true()" type="xs:string"/>
+            <xf:bind id="DateBind" nodeset="/Data/Date" required="true()" type="xs:date"/>
+        </xf:model>
+    </head>
+  <!-- -->
+    <body>
+        <h1>Hello Xforms</h1>
+        <xf:group>
+            <xf:input bind="NameBind">
+                <xf:label>Name</xf:label>
+            </xf:input>
+            <xf:input bind="DateBind">
+                <xf:label>Date</xf:label>
+            </xf:input>
+            <xf:submit submission="submit-id">
+                <xf:label>Submit</xf:label>
+            </xf:submit>
+        </xf:group>
+    </body>
+</html>
