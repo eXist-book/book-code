@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>exist-book</groupId>
+        <artifactId>build-parent-java</artifactId>
+        <version>1.0</version>
+        <relativePath>../../../../build-parent-java</relativePath>
+    </parent>
+
+    <artifactId>xmldb-client-parent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <name>XML:DB Client Examples Build Parent</name>
+    
+    <dependencies>
+      <dependency>
+        <groupId>org.exist-db</groupId>
+        <artifactId>existdb-core</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.exist-db</groupId>
+        <artifactId>xmldb-api</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.xmlrpc</groupId>
+        <artifactId>xmlrpc-client</artifactId>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <scope>runtime</scope>
+      </dependency>
+    </dependencies>
+    
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.xmlrpc</groupId>
+          <artifactId>xmlrpc-client</artifactId>
+          <version>3.1.3</version>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
+    
+</project>
