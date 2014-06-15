@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eXistBookExamplesContents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../book-browser/examples-contents.xsd" chapter="6">
+    <Title>Extension Modules</Title>
+    <Description>If any of these examples results in a namespace error, edit $EXIST_HOME/conf.xml, enable the
+    module (make sure the &lt;module ...&gt; element for it is not commented out) and restart
+    eXist.</Description>
+  <!-- -->
+    <Example href="cache-example.xq">
+        <Title>Example of using the global cache module</Title>
+    </Example>
+  <!-- -->
+    <Example href="demo-zip.xq">
+        <Title>Example creating a zip file with eXist</Title>
+        <Description>Make sure you have a directory /Test on your disk, otherwise this script will fail! 
+      When this script starts, it will aks you to login: this is because it needs admin priviliges to 
+      write to the file system. Please login as admin and continue. The output will be written to /test/compression-test.zip</Description>
+    </Example>
+  <!-- -->
+    <Example href="test-contentextraction.xq">
+        <Title>Show extracted content from a chapter of the Exist book</Title>
+        <Description>Although this script outputs XML, on some browsers it will show up as a html page because it contains html elements and the browser arrogantly ignores the MIME type...</Description>
+    </Example>
+  <!-- -->
+    <Example href="test-http-client.xq">
+        <Title>Get the contents of /db using the the EXpath http client and eXist's REST capabilities.</Title>
+    </Example>
+  <!-- -->
+    <Example href="test-image.xq">
+        <Title>Showing some properties of an image acquired through the image module.</Title>
+    </Example>
+  <!-- -->
+    <Example href="send-mail.xq">
+        <Title>Sending mail through the mail extension module</Title>
+        <AdditionalSource href="do-send-mail.xq"/>
+    </Example>
+  <!-- -->
+    <Example href="start-scheduled-job.xq">
+        <Title>Start a scheduled job that writes a  number of times to data/schedule-log.xml</Title>
+        <Description>When this script starts, it will aks you to login: this is because it needs admin priviliges.</Description>
+        <AdditionalSource href="do-scheduled-job.xq"/>
+        <AdditionalSource href="../data/schedule-log.xml"/>
+    </Example>
+  <!-- -->
+    <Example href="sort-example.xq">
+        <Title>Sort a list of nodes using the sort module</Title>
+        <AdditionalSource href="sort-node-set.xml"/>
+    </Example>
+  <!-- -->
+</eXistBookExamplesContents>

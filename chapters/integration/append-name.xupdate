@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xupdate:modifications version="1.0" xmlns:xupdate="http://www.xmldb.org/xupdate">
+    <xupdate:append select="/hello">
+        <name>Adam</name>
+    </xupdate:append>
+</xupdate:modifications>

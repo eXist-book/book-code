@@ -21,6 +21,7 @@
     <modules>
         <module>chapters/integration</module>
         <module>chapters/advanced-topics</module>
+        <module>xml-examples-xar</module>
     </modules>
     
 </project>

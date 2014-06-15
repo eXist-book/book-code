@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<security-manager xmlns="http://exist-db.org/Configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <authentication-entry-point>/authentication/login</authentication-entry-point>
+    <realm id="LDAP" version="1.0" principals-are-case-insensitive="true">
+        <context>
+            <authentication>simple</authentication>
+            <use-ssl>false</use-ssl>
+            <url>ldap://ad.mydomain.com:389</url>
+            <domain>ad.mydomain.com</domain>
+            <search>
+                <base>ou=mygroup,dc=ad,dc=mydomain,dc=com</base>
+                <default-username>account@ad.mydomain.com</default-username>
+                <default-password>XXXXXXX</default-password>
+                <account>
+                    <search-filter-prefix>objectClass=user</search-filter-prefix>
+                    <search-attribute key="objectSid">objectSid</search-attribute>
+                    <search-attribute key="primaryGroupID">primaryGroupID</search-attribute>
+                    <search-attribute key="name">sAMAccountName</search-attribute>
+                    <search-attribute key="dn">distinguishedName</search-attribute>
+                    <search-attribute key="memberOf">memberOf</search-attribute>
+                    <metadata-search-attribute key="http://axschema.org/namePerson">name</metadata-search-attribute>
+                    <metadata-search-attribute key="http://axschema.org/namePerson/last">sn</metadata-search-attribute>
+                    <metadata-search-attribute key="http://axschema.org/namePerson/first">givenName</metadata-search-attribute>
+                    <metadata-search-attribute key="http://axschema.org/contact/email">mail</metadata-search-attribute>                    
+                </account>
+                <group>
+                    <search-filter-prefix>objectClass=group</search-filter-prefix>
+                    <search-attribute key="member">member</search-attribute>
+                    <search-attribute key="objectSid">objectSid</search-attribute>
+                    <search-attribute key="name">sAMAccountName</search-attribute>
+                    <search-attribute key="dn">distinguishedName</search-attribute>
+                </group>
+            </search>
+        </context>
+    </realm>
+</security-manager>

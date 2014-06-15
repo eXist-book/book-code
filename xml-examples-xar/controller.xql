@@ -27,13 +27,13 @@ declare variable $exist:root external;
         <redirect url="book-browser/browse"/>
       </dispatch>
       
-  (: If it has no extension or .xql, assume its an XQuery script and pass control to this: :)
-  else if (not(contains($exist:resource, '.')) or ends-with($exist:resource, '.xql'))
+  (: If it has no extension or .xq, assume its an XQuery script and pass control to this: :)
+  else if (not(contains($exist:resource, '.')) or ends-with($exist:resource, '.xq'))
     then  
       let $forward-url as xs:string := concat($exist:controller, $exist:path)
       let $full-forward-url as xs:string :=
        if (not(contains($exist:resource, '.')))
-         then concat($forward-url, '.xql')
+         then concat($forward-url, '.xq')
          else $forward-url
       return
         <dispatch xmlns="http://exist.sourceforge.net/NS/exist">

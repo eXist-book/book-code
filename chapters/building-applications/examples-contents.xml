@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eXistBookExamplesContents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../book-browser/examples-contents.xsd" chapter="8">
+  <Title>Building Applications</Title>
+  <!-- -->
+  <Example href="mini-application/" show-source="false">
+    <Title>The URL rewriting demo mini application</Title>
+    <AdditionalSource href="mini-application/controller.xql"/>
+    <AdditionalSource href="mini-application/home.xq"/>
+    <AdditionalSource href="mini-application/hello.xq"/>
+  </Example>
+  <!-- -->
+  <Example href="show-controller-variables/" show-source="false">
+    <Title>Show the controller variables</Title>
+    <AdditionalSource href="show-controller-variables/controller.xql"/>
+    <AdditionalSource href="show-controller-variables/show-controller-variables.xq"/>
+  </Example>
+  <!-- -->
+  <Example href="views/" show-source="false">
+    <Title>Examples for the advanced URL controlling</Title>
+    <AdditionalSource href="views/controller.xql"/>
+    <AdditionalSource href="views/createmodel.xq"/>
+    <AdditionalSource href="views/home.xq"/>
+    <AdditionalSource href="views/xslt/view1.xslt"/>
+    <AdditionalSource href="views/xslt/view2a.xslt"/>
+    <AdditionalSource href="views/xslt/view2b.xslt"/>
+  </Example>
+  <!-- -->
+  <Example href="upload/upload.xq">
+    <Title>Upload a file to the database</Title>
+    <Description>The file will be stored in /db/apps/exist-book/data</Description>
+    <AdditionalSource href="upload/upload-process.xq"/>
+  </Example>
+  <!-- -->
+  <Example href="download.xq">
+    <Title>Download an XML file</Title>
+  </Example>
+  <!-- -->
+  <Example href="restxq/">
+    <Title>RESTXQ Examples</Title>
+    <AdditionalSource href="restxq/restxq-example-1.xqm"/>
+    <AdditionalSource href="restxq/restxq-example-2.xqm"/>
+    <AdditionalSource href="restxq/restxq-example-3.xqm"/>
+    <AdditionalSource href="restxq/restxq-example-4.xqm"/>
+    <AdditionalSource href="restxq/restxq-example-5.xqm"/>
+    <AdditionalSource href="restxq/restxq-example-6.xqm"/>
+    <AdditionalSource href="restxq/restxq-example-7.xqm"/>
+  </Example>
+  <!-- -->
+</eXistBookExamplesContents>

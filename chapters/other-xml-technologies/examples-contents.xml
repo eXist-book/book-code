@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eXistBookExamplesContents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../book-browser/examples-contents.xsd" chapter="9">
+    <Title>Other XML Technologies</Title>
+    <!-- -->
+    <Example href="get-xslt-info.xq">
+        <Title>XSLT: Get information about the XSLT processor using an embedded stylesheet</Title>
+    </Example>
+    <!-- -->
+    <Example href="xslt-parameters.xq">
+        <Title>Passing parameters to an XSLT stylesheet</Title>
+        <AdditionalSource href="parameters.xslt"/>
+    </Example>
+    <!-- -->
+    <Example href="xinclude-examples.xml">
+        <Title>Some examples of the XInclude capabilities</Title>
+        <AdditionalSource href="xinclude-input.xml"/>
+        <AdditionalSource href="xinclude-xquery.xq"/>
+    </Example>
+    <!-- -->
+    <Example href="validate.xq">
+        <Title>Perform some validations</Title>
+        <AdditionalSource href="simple.xsd"/>
+        <AdditionalSource href="simple-xml-valid.xml"/>
+        <AdditionalSource href="simple-xml-invalid.xml"/>
+    </Example>
+    <!-- -->
+    <Example href="collations.xq">
+        <Title>Example of sorting according to a collation</Title>
+    </Example>
+    <!-- -->
+    <Example href="do-xsl-fo.xq">
+        <Title>Example of an XSL-FO transformation</Title>
+        <AdditionalSource href="fop-readme.xml"/>
+    </Example>
+    <!-- -->
+    <Example href="better-form/test-xform.xhtml">
+        <title>BetterForm: Address XForm Example</title>
+    </Example>
+    <!-- -->
+    <Example href="xslt-forms/test-xform.xhtml">
+        <title>XSLTForms: Address XForm Example</title>
+    </Example>
+</eXistBookExamplesContents>

@@ -11,10 +11,37 @@
     
     <name>Build Parent</name>
     <description>Maven build parent for the eXist Book Code Examples</description>
+    <url>http://shop.oreilly.com/product/0636920026525.do</url>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    
+    <scm>
+        <url>https://github.com/eXist-book/book-code</url>
+        <connection>scm:git:https://github.com/eXist-book/book-code.git</connection>
+    </scm>
+    
+    <developers>
+        <developer>
+            <name>Adam Retter</name>
+            <organization>Evolved Binary Ltd</organization>
+            <url>http://www.adamretter.org.uk</url>
+        </developer>
+        <developer>
+            <name>Eirk Siegel</name>
+            <organization>Xatapult</organization>
+            <url>http://www.xatapult.nl/</url>
+        </developer>
+    </developers>
+    
+    <licenses>
+        <license>
+            <name>The BSD 3-Clause License</name>
+            <url>http://www.opensource.org/licenses/BSD-3-Clause</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     
     <build>
         <plugins>

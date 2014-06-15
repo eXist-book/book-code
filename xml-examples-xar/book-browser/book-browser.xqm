@@ -7,7 +7,7 @@ xquery version "3.0" encoding "UTF-8";
 :)
 (:============================================================================:)
 
-module namespace book-browser="http://www.exist-db.org/namespaces/book/browser";
+module namespace book-browser = "http://www.exist-db.org/namespaces/book/browser";
 
 declare variable $book-browser:BOOK-EXAMPLES-ROOT-LOCATION as xs:string := 
   replace(system:get-module-load-path(), '^(xmldb:exist://)?(embedded-eXist-server)?(.+)/.+$', '$3');
