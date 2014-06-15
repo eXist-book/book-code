@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <title>Address Form</title>
+        <xf:model>
+            <xf:instance xmlns="">
+                <person>
+                    <firstName/>
+                    <lastName/>
+                    <email/>
+                    <telephone/>
+                    <address>
+                        <addressLine/>
+                        <settlement/>
+                        <county/>
+                        <postalCode/>
+                    </address>
+                </person>
+            </xf:instance>
+            <xf:instance xmlns="" id="template">
+                <template>
+                    <addressLine/>
+                </template>
+            </xf:instance>
+            
+            <xf:bind id="first" nodeset="firstName" required="true" constraint="string-length(.) > 1"/>
+            <xf:bind id="last" nodeset="lastName" required="true" constraint="string-length(.) > 1"/>
+            <xf:bind id="em" nodeset="email" required="true" constraint="contains(., '@')"/>
+            
+            <xf:submission id="s-save" method="put" resource="http://admin:@localhost:8080/exist/rest/db/apps/exist-book/other-xml-technologies/better-form/xform-result.xml" replace="none">
+                <xf:action ev:event="xforms-submit-error">
+                    <xf:message>Registration failed. Please fill in valid values</xf:message>
+                </xf:action>
+                <xf:action ev:event="xforms-submit-done">
+                    <xf:message>You have been registered successfully.</xf:message>
+                </xf:action>
+            </xf:submission>
+        </xf:model>
+    </head>
+    <body>
+        <xf:group ref="/person">
+            <fieldset>
+                <xf:input bind="first">
+                    <xf:label>First name:</xf:label>
+                    <xf:alert>Your first name is required!</xf:alert>
+                </xf:input>
+                <xf:input bind="last">
+                    <xf:label>Last Name:</xf:label>
+                    <xf:alert>Your last name field is required!</xf:alert>
+                </xf:input>
+                <br/>
+                <xf:input bind="em">
+                    <xf:label>email:</xf:label>
+                    <xf:alert>Your email address is required!</xf:alert>
+                    <xf:hint>An email address should be of the form username@domainname.dom e.g. larry@google.com</xf:hint>
+                </xf:input>
+                <br/>
+                <xf:input ref="telephone">
+                    <xf:label>telephone:</xf:label>
+                </xf:input>
+            </fieldset>
+            <xf:group ref="address">
+                <fieldset>
+                    <legend>Mailing Address</legend>
+                    <xf:repeat id="addressLine-repeat" nodeset="addressLine">
+                        <xf:input ref=".">
+                            <xf:label>Address Line: </xf:label>
+                        </xf:input>
+                    </xf:repeat>
+                    <xf:trigger>
+                        <xf:label>Insert Row</xf:label>
+                        <xf:insert ev:event="DOMActivate" if="count(addressLine) != 0" at="index('addressLine-repeat')" position="after" nodeset="addressLine" origin="instance('template')/addressLine"/>
+                        <xf:insert ev:event="DOMActivate" if="count(addressLine) = 0" at="settlement" position="before" nodeset="address" origin="instance('template')/addressLine"/>
+                    </xf:trigger>
+                    <xf:trigger>
+                        <xf:label>Delete Row</xf:label>
+                        <xf:delete ev:event="DOMActivate" at="index('addressLine-repeat')" nodeset="addressLine"/>
+                    </xf:trigger>
+                    <br/>
+                    <xf:input ref="settlement">
+                        <xf:label>Settlement:</xf:label>
+                    </xf:input>
+                    <br/>
+                    <xf:input ref="county">
+                        <xf:label>County:</xf:label>
+                    </xf:input>
+                    <br/>
+                    <xf:input ref="postalCode">
+                        <xf:label>Postal Code:</xf:label>
+                    </xf:input>
+                </fieldset>
+            </xf:group>
+        </xf:group>
+        <xf:submit submission="s-save">
+            <xf:label>Save</xf:label>
+        </xf:submit>
+    </body>
+</html>

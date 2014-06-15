@@ -1,0 +1,12 @@
+<configuration xmlns="http://exist.sourceforge.net/NS/exist">
+  <!-- Forward URL's starting with rest or servlet to the REST servlet: -->
+  <forward pattern="/(rest|servlet)/" servlet="EXistServlet"/>
+  <!-- Patterns starting with /apps should look for a URL rewriting controller: -->
+  <root pattern="/apps" path="xmldb:exist:///db/apps"/>
+  <!-- My url www.myapp.com should map to my application stored underneath 
+        /db/myapp in the database: -->
+  <root server-name="www.myapp.com" pattern="/*" path="xmldb:exist:///db/apps/myapp/"/>
+  <!-- Anything else, pass on to the XQueryServlet for default executing 
+        from the file system: -->
+  <forward pattern=".*\.(xq|xql|xqy|xquery)$" servlet="XQueryServlet"/>
+</configuration>

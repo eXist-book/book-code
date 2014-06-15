@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>exist-book</groupId>
+        <artifactId>build-parent-java</artifactId>
+        <version>1.0</version>
+        <relativePath>../../../../build-parent-java</relativePath>
+    </parent>
+
+    <artifactId>xqj-client-parent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <name>XQJ Client Examples Build Parent</name>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>net.xqj</groupId>
+                <artifactId>exist-xqj</artifactId>
+                <version>1.0.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    <repositories>
+        <repository>
+            <id>unmanaged</id>
+            <name>unmanaged</name>
+            <url>file:${project.basedir}/${project.parent.relativePath}/lib</url> <!-- this is resolved by each module to find the parent lib -->
+        </repository>
+    </repositories>
+    
+</project>

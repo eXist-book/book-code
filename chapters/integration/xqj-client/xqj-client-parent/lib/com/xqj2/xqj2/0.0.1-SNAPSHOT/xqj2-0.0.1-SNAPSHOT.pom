@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xqj2</groupId>
+    <artifactId>xqj2</artifactId>
+    <packaging>jar</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>xqj2</name>
+
+    <description>XQJ2 proposed extensions to the XQJ API (JSR 225)</description>
+    
+    <scm>
+        <connection>scm:git:git@github.com:cfoster/xqj2.git</connection>
+        <developerConnection>scm:git:git@github.com:cfoster/xqj2.git</developerConnection>
+        <url>http://github.com/cfoster/xqj2</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>cfoster</id>
+            <name>Charles Foster</name>
+            <email>charles@cfoster.net</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>xqj2.com</name>
+        <url>http://xqj2.com</url>
+    </organization>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.xml.xquery</groupId>
+            <artifactId>xqj-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>exist-book</groupId>
+        <artifactId>build-parent</artifactId>
+        <version>1.0</version>
+        <relativePath>../build-parent</relativePath>
+    </parent>
+    
+    <artifactId>xml-examples-xar</artifactId>
+    <packaging>pom</packaging>
+    
+    <name>EXPath Package of XML Examples</name>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>ro.kuberam.maven.plugins</groupId>
+                <artifactId>kuberam-expath-plugin</artifactId>
+                <version>0.3</version>
+                <executions>
+                    <execution>
+                        <id>create-xar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>make-xar</goal>
+                        </goals>
+                        <configuration>
+                            <descriptor>expath-pkg.assembly.xml</descriptor>
+                            <finalName>exist-book-${project.version}</finalName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>kuberam</id>
+            <releases>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <url>http://claudius108.users.sourceforge.net/repos/maven/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    
+</project>

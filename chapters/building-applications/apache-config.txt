@@ -1,0 +1,25 @@
+<VirtualHost *:80>
+
+    ServerAdmin your-admin-email@your-domain.com
+
+    # The URL's for this application:
+    ServerName www.myapp.nl
+    ServerAlias myapp.com
+	
+    ProxyRequests Off
+    <Proxy *>
+        Order deny,allow
+        Allow from all
+    </Proxy>
+
+    ProxyPass        / http://www.myapp.nl:8080/exist/
+    ProxyPassReverse / http://www.myapp.nl:8080/exist/
+  
+    # Cookies must be adapted to allow the session mechanism to work:
+    ProxyPassReverseCookiePath /exist /
+    ProxyPassReverseCookieDomain localhost myapp.com
+    
+    RewriteEngine   on
+    RewriteRule     ^/(.*)$     /$1   [PT]
+
+</VirtualHost>

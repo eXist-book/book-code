@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+    <name>
+        <first-name>George</first-name>
+        <family-name>Baker</family-name>
+    </name>
+    <born>
+        <date>1985-11-17</date>
+        <location>
+            <settlement>Exeter</settlement>
+            <country>United Kingdom</country>
+        </location>
+    </born>
+    <residence>
+        <location>
+            <address-line>4 Sea Spray View</address-line>
+            <settlement>Exmouth</settlement>
+            <county>Devon</county>
+            <country>United Kindom</country>
+        </location>
+    </residence>
+    <contact>
+        <telehone type="mobile">+44 5555 123456</telehone>
+        <email>me@georgebaker.com</email>
+    </contact>
+</person>

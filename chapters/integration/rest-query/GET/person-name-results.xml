@@ -1,0 +1,14 @@
+﻿﻿<exist:result xmlns:exist="http://exist.sourceforge.net/NS/exist" exist:hits="3" exist:start="1" exist:count="3">
+    <name>
+        <first-name>John</first-name>
+        <family-name>Smith</family-name>
+    </name>
+    <name>
+        <first-name>George</first-name>
+        <family-name>Baker</family-name>
+    </name>
+    <name>
+        <first-name>Barbara</first-name>
+        <family-name>Jones</family-name>
+    </name>
+</exist:result>

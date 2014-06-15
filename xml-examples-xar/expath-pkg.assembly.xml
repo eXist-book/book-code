@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://expath.org/ns/pkg" name="https://github.com/eXist-book" abbrev="eXist-book" version="${project.version}" spec="1.0">
+    <title>eXist O'Reilly Book XML Demo Code</title>
+    <author id="adamretter">Adam Retter</author>
+    <author id="eriksiegel">Erik Siegel</author>
+    <website>https://github.com/eXist-book</website>
+    <license>The BSD 3-Clause License</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <status>stable</status>
+    <dependency processor="http://exist-db.org/" semver-min="2.1"/>
+    <target>exist-book</target>
+    <permissions user="admin" password="" group="dba" mode="rw-rw-r--"/>
+    <finish>post-install.xql</finish>
+    <tag>application</tag>
+    <tag>exist</tag>
+    <tag>library</tag>
+    <tag>web-api</tag>
+    <tag>webapp</tag>
+    <tag>xquery</tag>
+    <tag>xslt</tag>
+    <category id="apps">Applications</category>
+    <category id="exist">eXist extensions</category>
+    
+    <fileSets>
+        <fileSet>
+            <directory>${basedir}</directory>
+            <includes>
+                <include>post-install.xql</include>
+                <include>controller.xql</include>
+                <include>installer/</include>
+                <include>data/</include>
+                <include>book-browser/</include>
+            </includes>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/getting-started</directory>
+            <includes>
+                <include>*.html</include>
+                <include>*.xml</include>
+                <include>*.xq</include>
+                <include>*.xsl</include>
+            </includes>
+            <excludes>
+                <exclude>pom.xml</exclude>
+            </excludes>
+            <outputDirectory>getting-started</outputDirectory>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/working-with-the-database</directory>
+            <includes>
+                <include>*.xml</include>
+                <include>*.xq</include>
+            </includes>
+            <outputDirectory>working-with-the-database</outputDirectory>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/xquery-for-exist</directory>
+            <includes>
+                <include>*.xml</include>
+                <include>*.xq</include>
+                <include>*.xqm</include>
+            </includes>
+            <outputDirectory>xquery-for-exist</outputDirectory>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/security</directory>
+            <includes>
+                <include>remove-preinstalled-expath-pkgs.xq</include>
+            </includes>
+            <outputDirectory>security</outputDirectory>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/building-applications</directory>
+            <includes>
+                <include>download.xq</include>
+                <include>examples-contents.xml</include>
+                <include>mini-application/</include>
+                <include>show-controller-variables/</include>
+                <include>upload/</include>
+                <include>views/</include>
+                <include>restxq/</include>
+            </includes>
+            <outputDirectory>building-applications</outputDirectory>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/other-xml-technologies</directory>
+            <includes>
+                <include>*.xml</include>
+                <include>*.xq</include>
+                <include>*.xsd</include>
+                <include>better-form/</include>
+                <include>xslt-forms/</include>
+            </includes>
+            <outputDirectory>other-xml-technologies</outputDirectory>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/indexing</directory>
+            <includes>
+                <include>*.xml</include>
+                <include>*.xq</include>
+                <include>*.xconf</include>
+                <include>data/</include>
+            </includes>
+            <outputDirectory>indexing</outputDirectory>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/integration</directory>
+            <includes>
+                <include>*.xml</include>
+                <include>*.xupdate</include>
+                <include>*.xq</include>
+                <include>rest-query/</include>
+                <include>rest-stored-query/</include>
+                <include>restxq-stored-query/</include>
+            </includes>
+            <outputDirectory>integration</outputDirectory>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/system-administration</directory>
+            <includes>
+                <include>memory-status.xq</include>
+            </includes>
+            <outputDirectory>system-administration</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>${basedir}/../chapters/advanced-topics</directory>
+            <includes>
+                <include>weather.xq</include>
+                <include>simple-example-trigger.xqm</include>
+                <include>journal-notification-trigger.xqm</include>
+            </includes>
+            <outputDirectory>advanced-topics</outputDirectory>
+        </fileSet>
+        
+        <fileSet>
+            <directory>${basedir}/../chapters/extension-modules</directory>
+            <includes>
+                <include>*.xml</include>
+                <include>*.xq</include>
+                <include>data/</include>
+            </includes>
+            <outputDirectory>extension-modules</outputDirectory>
+        </fileSet>
+        
+        
+    </fileSets>
+</package>

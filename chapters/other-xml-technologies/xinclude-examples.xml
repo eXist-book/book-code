@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XIncludeExamples xmlns:xi="http://www.w3.org/2001/XInclude">
+    <IncludingById>
+        <Line xml:id="L1">This is line 1</Line>
+    </IncludingById>
+    <IncludingByXPath>
+        <Line xml:id="L2">This is line 2</Line>
+    </IncludingByXPath>
+    <IncludeWithFallback>Fallback: File not found!</IncludeWithFallback>
+    <IncludeXQueryScriptPassingParameters>
+        <XQueryXql>
+            <CurrentDoc>xinclude-examples.xml</CurrentDoc>
+            <CurrentCollection>/db/apps/exist-book/other-xml-technologies</CurrentCollection>
+            <Par1>test</Par1>
+        </XQueryXql>
+    </IncludeXQueryScriptPassingParameters>
+</XIncludeExamples>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>exist-book</groupId>
+        <artifactId>build-parent-java</artifactId>
+        <version>1.0</version>
+        <relativePath>../../build-parent-java</relativePath>
+    </parent>
+    
+    <artifactId>advanced-topics-chapter</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    
+    <name>eXist Book - Advanced Topics Chapter</name>
+    <description>Code examples for the Advanced Topics Chapter of the eXist Book</description>
+    
+    <modules>
+        <module>scheduler-java-job</module>
+        <module>startup-trigger</module>
+        <module>java-database-trigger</module>
+        <module>internal-module</module>
+    </modules>
+    
+</project>
+
+

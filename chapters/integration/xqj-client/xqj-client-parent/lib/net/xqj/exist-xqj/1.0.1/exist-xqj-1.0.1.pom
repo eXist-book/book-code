@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.xqj</groupId>
+    <artifactId>exist-xqj</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.1</version>
+    <name>exist-xqj</name>
+
+    <developers>
+        <developer>
+            <id>cfoster</id>
+            <name>Charles Foster</name>
+            <email>charles@cfoster.net</email>
+        </developer>
+    </developers>
+
+    <organization>
+        <name>xqj.net</name>
+        <url>http://xqj.net</url>
+    </organization>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.xml.xquery</groupId>
+            <artifactId>xqj-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xqj2</groupId>
+            <artifactId>xqj2</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>

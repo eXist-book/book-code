@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<package xmlns="http://expath.org/ns/pkg" name="http://www.exist-db.org/eXist-book" abbrev="eXist-book" version="0.1" spec="1.0">
-    <title>O'Reilly eXist Book Demo App</title>
-</package>
