@@ -95,6 +95,7 @@
                 <include>*.xml</include>
                 <include>*.xq</include>
                 <include>*.xsd</include>
+                <include>*.xslt</include>
                 <include>better-form/</include>
                 <include>xslt-forms/</include>
             </includes>
