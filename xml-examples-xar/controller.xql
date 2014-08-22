@@ -19,7 +19,7 @@ declare variable $exist:root external;
   if ($exist:path eq '')
     then
       <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <redirect url="eXist-book/book-browser/browse"/>
+        <redirect url="exist-book/book-browser/browse"/>
       </dispatch>
   else if ($exist:path eq '/')
     then 
