@@ -40,7 +40,7 @@
                 <include>*.html</include>
                 <include>*.xml</include>
                 <include>*.xq</include>
-                <include>*.xsl</include>
+                <include>*.xslt</include>
             </includes>
             <excludes>
                 <exclude>pom.xml</exclude>
