@@ -1,6 +1,6 @@
 xquery version "1.0" encoding "UTF-8";
 
-declare option exist:serialize "method=html media-type=text/html indent=no";
+declare option exist:serialize "method=html media-type=text/html indent=yes";
 
 declare function local:traverse-collection($collection as xs:anyURI,
     $indent as xs:integer) as element(p)*
