@@ -5,7 +5,7 @@ declare option exist:serialize "method=html media-type=text/html indent=no";
 declare variable $page-title as xs:string := "Upload example process (binary file)";
 
 let $field-name as xs:string := "file-upload"
-let $store-collection as xs:anyURI := xs:anyURI('/db/apps/eXist-book/data')
+let $store-collection as xs:anyURI := xs:anyURI('/db/apps/exist-book/data')
 
 let $upload-name as xs:string := request:get-uploaded-file-name($field-name)
 let $upload-size as xs:double := request:get-uploaded-file-size($field-name)
