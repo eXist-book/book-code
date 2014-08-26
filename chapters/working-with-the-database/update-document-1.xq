@@ -13,12 +13,14 @@ declare function local:make-sure-update-resource-exists() as xs:string?
 };
 
 let $full-uri as xs:string := concat($data-collection, '/', $update-resource)
-let $root-elm as element() := doc($full-uri)/*
 return
     <UpdateResult document="{$full-uri}" created="{local:make-sure-update-resource-exists()}">
     {
-        update insert attribute changed {current-dateTime()} into $root-elm,
-        update insert <NewElement/> into $root-elm
+        let $root-elm as element() := doc($full-uri)/*
+        return (
+          update insert attribute changed {current-dateTime()} into $root-elm,
+          update insert <NewElement/> into $root-elm
+        )
     }
         Changed: {$full-uri}
     </UpdateResult>
