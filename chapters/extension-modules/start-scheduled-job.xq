@@ -1,6 +1,6 @@
 xquery version "3.0" encoding "UTF-8";
 
-declare namespace scheduler = "http://exist-db.org/xquery/scheduler";
+import module namespace scheduler = "http://exist-db.org/xquery/scheduler";
 
 declare option exist:serialize "method=html media-type=text/html";
 
