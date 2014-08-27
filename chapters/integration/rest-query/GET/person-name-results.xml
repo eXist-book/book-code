@@ -1,4 +1,4 @@
-﻿﻿<exist:result xmlns:exist="http://exist.sourceforge.net/NS/exist" exist:hits="3" exist:start="1" exist:count="3">
+﻿<exist:result xmlns:exist="http://exist.sourceforge.net/NS/exist" exist:hits="3" exist:start="1" exist:count="3">
     <name>
         <first-name>John</first-name>
         <family-name>Smith</family-name>
