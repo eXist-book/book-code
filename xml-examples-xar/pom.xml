@@ -21,7 +21,7 @@
             <plugin>
                 <groupId>ro.kuberam.maven.plugins</groupId>
                 <artifactId>kuberam-expath-plugin</artifactId>
-                <version>0.3</version>
+                <version>0.4.1</version>
                 <executions>
                     <execution>
                         <id>create-xar</id>
@@ -38,15 +38,5 @@
             </plugin>
         </plugins>
     </build>
-    
-    <pluginRepositories>
-        <pluginRepository>
-            <id>kuberam</id>
-            <releases>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-            <url>http://claudius108.users.sourceforge.net/repos/maven/</url>
-        </pluginRepository>
-    </pluginRepositories>
     
 </project>
