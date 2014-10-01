@@ -11,7 +11,7 @@
     <dependency processor="http://exist-db.org/" semver-min="2.1"/>
     <target>exist-book</target>
     <permissions user="admin" password="" group="dba" mode="rw-rw-r--"/>
-    <finish>post-install.xql</finish>
+    <finish>post-install.xq</finish>
     <tag>application</tag>
     <tag>exist</tag>
     <tag>library</tag>
@@ -26,7 +26,7 @@
         <fileSet>
             <directory>${basedir}</directory>
             <includes>
-                <include>post-install.xql</include>
+                <include>post-install.xq</include>
                 <include>controller.xql</include>
                 <include>icon.png</include>
                 <include>installer/</include>
