@@ -155,7 +155,7 @@ public class WeatherJob extends UserJavaJob {
         } finally {
             //return the broker for accessing the database
             if(broker != null) {
-                brokerPool.release(broker);
+                broker.close();
             }
         }
     }

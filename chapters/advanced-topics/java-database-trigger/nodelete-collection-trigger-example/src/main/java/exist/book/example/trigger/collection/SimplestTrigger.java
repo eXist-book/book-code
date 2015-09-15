@@ -31,7 +31,7 @@ public class SimplestTrigger implements CollectionTrigger {
 
     @Override
     public void beforeCreateCollection(final DBBroker broker, final Txn txn, final XmldbURI uri) throws TriggerException {
-        LOG.info("User '" + broker.getSubject().getName() + "' is creating the Collection '" + uri + "'...");
+        LOG.info("User '" + broker.getCurrentSubject().getName() + "' is creating the Collection '" + uri + "'...");
     }
 
     //<editor-fold desc="other empty function implementations here!">

@@ -4,7 +4,7 @@ import org.exist.collections.Collection;
 import org.exist.collections.IndexInfo;
 import org.exist.scheduler.JobException;
 import org.exist.storage.DBBroker;
-import org.exist.storage.lock.Lock;
+import org.exist.storage.lock.Lock.LockMode;
 import org.exist.storage.txn.TransactionManager;
 import org.exist.storage.txn.Txn;
 import org.exist.xmldb.XmldbURI;
@@ -40,7 +40,7 @@ public class CommonUtils {
             try {
 
                 //open the weather collection
-                collection = broker.openCollection(XmldbURI.create(targetCollection), lockCollection ? Lock.WRITE_LOCK : Lock.NO_LOCK);
+                collection = broker.openCollection(XmldbURI.create(targetCollection), lockCollection ? LockMode.WRITE_LOCK : LockMode.NO_LOCK);
                 if(collection == null) {
                     transact.abort(txn);
                     throw new JobException(JobException.JobExceptionAction.JOB_ABORT_THIS, "Collection: " + targetCollection + " not found!");
@@ -54,12 +54,12 @@ public class CommonUtils {
             } finally {
                 //release the lock on the weather collection
                 if(collection != null && lockCollection) {
-                    collection.release(Lock.WRITE_LOCK);
+                    collection.release(LockMode.WRITE_LOCK);
                 }
             }
 
             //store
-            collection.store(txn, broker, indexInfo, document, false);
+            collection.store(txn, broker, indexInfo, document);
             transact.commit(txn);
 
         } catch(final Exception e) {

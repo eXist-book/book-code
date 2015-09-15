@@ -58,6 +58,11 @@ public class StatsSystemTask implements SystemTask {
     private String statsCollection = null;
 
     @Override
+    public String getName() {
+        return "StatsSystemTask";
+    }
+
+    @Override
     public void configure(final Configuration configuration, final Properties properties) throws EXistException {
         this.statsCollection = properties.getProperty("stats-collection", "/db/stats");
     }

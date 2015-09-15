@@ -7,7 +7,7 @@
 This repository contains all (except the [Using eXist 101 chapter](https://github.com/eXist-book/using-exist-101)) of the
 code and examples discussed in the [eXist book](http://shop.oreilly.com/product/0636920026525.do) published by O'Reilly.
 
-This version contains code compatible with eXist-db 3.0.RC1. Versions for eXist-db [2.1](https://github.com/eXist-book/book-code/) (which was the latest version at the time the book was authored), [3.0](https://github.com/eXist-book/book-code/tree/eXist-3.0), and [4.0.0](https://github.com/eXist-book/book-code/tree/eXist-4.0.0) are also available.
+This version contains code compatible with eXist-db 3.0. Versions for eXist-db [2.1](https://github.com/eXist-book/book-code/) (which was the latest version at the time the book was authored), [3.0.RC1](https://github.com/eXist-book/book-code/tree/eXist-3.0.RC1), and [4.0.0](https://github.com/eXist-book/book-code/tree/eXist-4.0.0) are also available.
 
 The repository has the following layout:
 

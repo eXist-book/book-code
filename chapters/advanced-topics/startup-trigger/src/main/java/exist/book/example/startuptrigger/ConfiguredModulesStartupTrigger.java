@@ -8,7 +8,7 @@ import org.exist.dom.memtree.DocumentImpl;
 import org.exist.dom.memtree.MemTreeBuilder;
 import org.exist.storage.DBBroker;
 import org.exist.storage.StartupTrigger;
-import org.exist.storage.lock.Lock;
+import org.exist.storage.lock.Lock.LockMode;
 import org.exist.storage.txn.TransactionManager;
 import org.exist.storage.txn.Txn;
 import org.exist.util.Configuration;
@@ -152,7 +152,7 @@ public class ConfiguredModulesStartupTrigger implements StartupTrigger {
         try {
             //open the collection
             final XmldbURI targetCollection = target.removeLastSegment();
-            final Collection collection = broker.openCollection(targetCollection, Lock.NO_LOCK);
+            final Collection collection = broker.openCollection(targetCollection, LockMode.NO_LOCK);
 
             if(collection == null) {
                 //no such collection
@@ -169,7 +169,7 @@ public class ConfiguredModulesStartupTrigger implements StartupTrigger {
                 indexInfo = collection.validateXMLResource(txn, broker, documentName, document);
 
                 //store
-                collection.store(txn, broker, indexInfo, document, false);
+                collection.store(txn, broker, indexInfo, document);
                 transact.commit(txn);
             }
         } catch(final Exception e) {

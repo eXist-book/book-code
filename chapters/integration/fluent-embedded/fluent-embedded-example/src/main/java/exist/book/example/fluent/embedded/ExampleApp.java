@@ -1,13 +1,14 @@
 package exist.book.example.fluent.embedded;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.exist.fluent.Database;
 import org.exist.fluent.DatabaseException;
 import org.exist.fluent.Document;
@@ -21,6 +22,8 @@ import org.exist.util.MimeTable;
 import org.exist.util.MimeType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class ExampleApp {
     private final static Logger logger = LoggerFactory.getLogger(ExampleApp.class);
@@ -36,18 +39,18 @@ public class ExampleApp {
         
         final String path = args[0];
         
-        final File source = new File(args[1]);
-        if(!source.exists()) {
-            System.err.println("Source '" + source.getAbsolutePath() + "' does not exist!");
+        final Path source = Paths.get(args[1]);
+        if(!Files.exists(source)) {
+            System.err.println("Source '" + source.toAbsolutePath() + "' does not exist!");
             System.exit(2);
          } 
         
         final String query = args[2];
-        final File queryFile;
+        final Path queryFile;
         if(query.charAt(0) == '@') {
-           queryFile = new File(query.substring(1));
-           if(!queryFile.exists()) {
-               System.err.println("Query file '" + queryFile.getAbsolutePath() + "' does not exist!");
+           queryFile = Paths.get(query.substring(1));
+           if(!Files.exists(queryFile)) {
+               System.err.println("Query file '" + queryFile.toAbsolutePath() + "' does not exist!");
                System.exit(3);
             } 
         } else {
@@ -69,7 +72,7 @@ public class ExampleApp {
         
         try {
             //initialise the database driver and login
-            final File config = new ExampleApp().getConfig();
+            final Path config = new ExampleApp().getConfig();
             if(config == null) {
                 logger.error("Could not retrieve conf.xml from the classpath");
                 System.exit(4);
@@ -121,27 +124,31 @@ public class ExampleApp {
      * Stores a File or Directory of Files into a Collection in eXist.
      * Given a Directory, all files and sub-directories are stored recursively.
      */
-    private static void storeDocuments(final Folder folder, final File source) {
-        if(source.isDirectory()) {
+    private static void storeDocuments(final Folder folder, final Path source) {
+        if(Files.isDirectory(source)) {
             //create a sub-collection
-            final Folder subFolder = folder.children().create(source.getName());
-            for(final File f: source.listFiles()) {
-                storeDocuments(subFolder, f);
+            final Folder subFolder = folder.children().create(source.getFileName().toString());
+            try (final Stream<Path> children = Files.list(source)) {
+                for(final Path f : children.collect(Collectors.toList())) {
+                    storeDocuments(subFolder, f);
+                }
+            } catch (final IOException ioe) {
+                logger.error(ioe.getMessage(), ioe);
             }
         } else {
             //determine the files type
             final MimeTable mimeTable = MimeTable.getInstance();
-            final MimeType mimeType = mimeTable.getContentTypeFor(source.getName());
+            final MimeType mimeType = mimeTable.getContentTypeFor(source.getFileName().toString());
             //final String resourceType = mimeType.isXMLType() ? "XMLResource" : "BinaryResource";
             
             //store the file
-            logger.info("Starting store of {} to {}/{}...", source.getAbsolutePath(), folder.name(), source.getName());
-            final Name name = Name.create(folder.database(), source.getName());
+            logger.info("Starting store of {} to {}/{}...", source.toAbsolutePath(), folder.name(), source.getFileName());
+            final Name name = Name.create(folder.database(), source.getFileName().toString());
             final Document doc;
             if(mimeType != null && mimeType.isXMLType()) {
-                doc = folder.documents().load(name, XML.xml(source));
+                doc = folder.documents().load(name, XML.xml(source.toFile()));
             } else {
-                doc = folder.documents().load(name, Blob.blob(source));
+                doc = folder.documents().load(name, Blob.blob(source.toFile()));
             }
         }
     }
@@ -181,14 +188,14 @@ public class ExampleApp {
     /**
      * Removes document(s) and/or collection(s) from a collection based on a Source file or directory
      */
-    private static void removeDocuments(final Folder folder, final File source) {
+    private static void removeDocuments(final Folder folder, final Path source) {
         
         logger.info("Removing previously stored file(s)...");
-        if(source.isDirectory()) {
+        if(Files.isDirectory(source)) {
             //removing a collection removes all of its sub-collections and files recursively
-            folder.children().get(source.getName()).delete();
+            folder.children().get(source.getFileName().toString()).delete();
         } else {
-            folder.documents().get(source.getName()).delete();
+            folder.documents().get(source.getFileName().toString()).delete();
         }
         logger.info("Removed previously stored file(s) OK");
     }
@@ -199,21 +206,11 @@ public class ExampleApp {
      * @param f The file to read the contents of
      * @param builder The String Builder to append the file contents to
      */
-    private static void fileContents(final File f, final StringBuilder builder) {
-        Reader reader = null;
+    private static void fileContents(final Path f, final StringBuilder builder) {
         try {
-           reader = new FileReader(f); 
-           final char buf[] = new char[1024];
-           int read = -1;
-           while((read = reader.read(buf)) != -1) {
-               builder.append(buf, 0, read);
-           }
+            builder.append(new String(Files.readAllBytes(f), UTF_8));
         } catch(final IOException ioe) {
             logger.error(ioe.getMessage(), ioe);
-        } finally {
-            if(reader != null) {
-                try { reader.close(); } catch(final IOException ioe) { logger.warn(ioe.getMessage(), ioe); }
-            }
         }
     }
     
@@ -228,34 +225,26 @@ public class ExampleApp {
         System.err.println();
     }
     
-    public File getConfig() {
+    public Path getConfig() {
 //        try {
             
             InputStream is = null;
-            OutputStream os = null;
             try {
                 
                 final URL url = getClass().getClassLoader().getResource("conf.xml");
                 logger.info("Found conf.xml on classpath at {}", url);
                 
                 is = url.openStream();
-                final File tmpConfig = File.createTempFile("conf.xml", "tmp");
-                os = new FileOutputStream(tmpConfig);
+                final Path tmpConfig = Files.createTempFile("conf.xml", "tmp");
+                Files.copy(is, tmpConfig);
                 
-                int read = -1;
-                final byte buf[] = new byte[1024];
-                while((read = is.read(buf)) != -1) {
-                    os.write(buf, 0, read);
-                }
-                
-                logger.info("Unpacked conf.xml to {}", tmpConfig.getAbsolutePath());
+                logger.info("Unpacked conf.xml to {}", tmpConfig.toAbsolutePath());
                 
                 return tmpConfig;
             } catch(final IOException ioe) {
                 logger.error("Could not get conf.xml: {}", ioe.getMessage());
                 return null;
             } finally {
-                try { os.close(); } catch(final IOException ioe) { logger.warn(ioe.getMessage()); }
                 try { is.close(); } catch(final IOException ioe) { logger.warn(ioe.getMessage()); }
             }
     }
