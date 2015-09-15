@@ -159,16 +159,4 @@ public class NoDeleteCollectionTrigger implements CollectionTrigger {
         //do nothing
     }
     //</editor-fold>
-
-    //<editor-fold desc="deprecated, so we can ignore">
-    @Override
-    public void prepare(final int event, final DBBroker broker, final Txn txn, final Collection collection, final Collection newCollection) throws TriggerException {
-        //ignore
-    }
-
-    @Override
-    public void finish(final int event, final DBBroker broker, final Txn txn, final Collection collection, final Collection newCollection) {
-        //ignore
-    }
-    //</editor-fold>
 }

@@ -47,7 +47,7 @@
     <dependencies>
         <dependency>
             <groupId>org.exist-db</groupId>
-            <artifactId>existdb-fluent</artifactId>
+            <artifactId>exist-fluent</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

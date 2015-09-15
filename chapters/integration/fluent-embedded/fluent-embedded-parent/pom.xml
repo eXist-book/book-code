@@ -27,7 +27,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.exist-db</groupId>
-                <artifactId>existdb-fluent</artifactId>
+                <artifactId>exist-fluent</artifactId>
                 <version>${exist.version}</version>
             </dependency>
         </dependencies>

@@ -67,17 +67,5 @@ public class SimplestTrigger implements CollectionTrigger {
     public void configure(final DBBroker broker, final Collection collection, final Map<String, List<? extends Object>> parameters) throws TriggerException {
     }
 
-    //<editor-fold desc="deprecated, so we can ignore">
-    @Override
-    public void prepare(final int event, final DBBroker broker, final Txn txn, final Collection collection, final Collection newCollection) throws TriggerException {
-        //ignore
-    }
-
-    @Override
-    public void finish(final int event, final DBBroker broker, final Txn txn, final Collection collection, final Collection newCollection) {
-        //ignore
-    }
-    //</editor-fold>
-
     //</editor-fold>
 }

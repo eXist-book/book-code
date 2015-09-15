@@ -1,7 +1,7 @@
 package exist.book.example.module.internal;
 
 import org.exist.dom.QName;
-import org.exist.memtree.MemTreeBuilder;
+import org.exist.dom.memtree.MemTreeBuilder;
 import org.exist.xquery.BasicFunction;
 import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
@@ -59,10 +59,10 @@ public class HelloFunctions extends BasicFunction {
         final Sequence result;
 
         //act on the invoked function name
-        if(isCalledAs(qnHelloWorld.getLocalName())) {
+        if(isCalledAs(qnHelloWorld.getLocalPart())) {
             result = sayHelloWorld();
 
-        } else if(isCalledAs(qnSayHello.getLocalName())) {
+        } else if(isCalledAs(qnSayHello.getLocalPart())) {
 
             final String greeter = args[0].itemAt(0).getStringValue();
 

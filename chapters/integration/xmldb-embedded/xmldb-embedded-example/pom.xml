@@ -47,7 +47,7 @@
     <dependencies>
         <dependency>
             <groupId>org.exist-db</groupId>
-            <artifactId>existdb-core</artifactId>
+            <artifactId>exist-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.exist-db.thirdparty.org.xmldb</groupId>

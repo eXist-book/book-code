@@ -2,9 +2,9 @@ package exist.book.example.trigger.document;
 
 import org.apache.log4j.Logger;
 import org.exist.collections.Collection;
-import org.exist.collections.triggers.FilteringTrigger;
+import org.exist.collections.triggers.SAXTrigger;
 import org.exist.collections.triggers.TriggerException;
-import org.exist.dom.DocumentImpl;
+import org.exist.dom.persistent.DocumentImpl;
 import org.exist.storage.DBBroker;
 import org.exist.storage.txn.Txn;
 import org.exist.xmldb.XmldbURI;
@@ -57,7 +57,7 @@ import java.util.Stack;
  *
  * @author Adam Retter <adam@exist-db.org>
  */
-public class ExampleFilteringTrigger extends FilteringTrigger {
+public class ExampleFilteringTrigger extends SAXTrigger {
 
     private final static Logger LOG = Logger.getLogger(ExampleFilteringTrigger.class);
     private final static String DROP_PARAM = "drop";
@@ -277,18 +277,6 @@ public class ExampleFilteringTrigger extends FilteringTrigger {
     @Override
     public void afterCopyDocument(final DBBroker broker, final Txn txn, final DocumentImpl document, final XmldbURI oldUri) throws TriggerException {
         //do nothing
-    }
-    //</editor-fold>
-
-    //<editor-fold desc="deprecated, so we can ignore">
-    @Override
-    public void prepare(final int event, final DBBroker broker, final Txn txn, final XmldbURI documentPath, final DocumentImpl existingDocument) throws TriggerException {
-        //ignore
-    }
-
-    @Override
-    public void finish(final int event, final DBBroker broker, final Txn txn, final XmldbURI documentPath, final DocumentImpl document) {
-        //ignore
     }
     //</editor-fold>
 

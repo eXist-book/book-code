@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>org.exist-db</groupId>
-            <artifactId>existdb-core</artifactId>
+            <artifactId>exist-core</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>

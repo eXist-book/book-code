@@ -22,9 +22,9 @@ import org.apache.log4j.Logger;
 import org.exist.EXistException;
 import org.exist.Namespaces;
 import org.exist.dom.QName;
-import org.exist.memtree.DocumentImpl;
-import org.exist.memtree.MemTreeBuilder;
-import org.exist.memtree.SAXAdapter;
+import org.exist.dom.memtree.DocumentImpl;
+import org.exist.dom.memtree.MemTreeBuilder;
+import org.exist.dom.memtree.SAXAdapter;
 import org.exist.scheduler.JobException;
 import org.exist.scheduler.UserJavaJob;
 import org.exist.storage.BrokerPool;
@@ -131,7 +131,7 @@ public class WeatherJob extends UserJavaJob {
                 LOG.debug("Successfully retrieved weather from web-service.");
             } else {
                 //FAIL
-                final org.exist.memtree.DocumentImpl failureDoc = createFailureDoc(response);
+                final org.exist.dom.memtree.DocumentImpl failureDoc = createFailureDoc(response);
                 storeDocument(broker, weatherCollection, failureDoc, true);
 
                 final String msg = "Weather web-service request failed: " + status.toString();
@@ -214,7 +214,7 @@ public class WeatherJob extends UserJavaJob {
      *
      * @return An in-memory document representing the failure
      */
-    private final org.exist.memtree.DocumentImpl createFailureDoc(final ClientResponse response) throws JobException {
+    private final org.exist.dom.memtree.DocumentImpl createFailureDoc(final ClientResponse response) throws JobException {
         try {
             final MemTreeBuilder builder = new MemTreeBuilder();
             builder.startDocument();
