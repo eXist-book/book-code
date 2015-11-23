@@ -85,9 +85,9 @@
                 <version>${exist.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.exist-db</groupId>
+                <groupId>org.exist-db.thirdparty.org.xmldb</groupId>
                 <artifactId>xmldb-api</artifactId>
-                <version>1.0</version>
+                <version>1.0-patched</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>

@@ -22,7 +22,7 @@
         <artifactId>existdb-core</artifactId>
       </dependency>
       <dependency>
-        <groupId>org.exist-db</groupId>
+        <groupId>org.exist-db.thirdparty.org.xmldb</groupId>
         <artifactId>xmldb-api</artifactId>
       </dependency>
       <dependency>
