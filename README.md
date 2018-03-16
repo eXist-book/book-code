@@ -1,6 +1,10 @@
 eXist Book Example Code 
 =======================
 
+[![Build Status](https://travis-ci.org/eXist-book/book-code.png?branch=master)](https://travis-ci.org/eXist-book/book-code)
+[![Java 6](https://img.shields.io/badge/java-6-blue.svg)](http://java.oracle.com)
+[![License](https://img.shields.io/badge/license-BSD%203-blue.svg)](http://www.opensource.org/licenses/BSD-3-Clause)
+
 This repository contains all (except the [Using eXist 101 chapter](https://github.com/eXist-book/using-exist-101)) of the
 code and examples discussed in the [eXist book](http://shop.oreilly.com/product/0636920026525.do) published by O'Reilly.
 
