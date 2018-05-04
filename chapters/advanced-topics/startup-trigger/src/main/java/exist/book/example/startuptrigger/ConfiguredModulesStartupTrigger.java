@@ -55,23 +55,27 @@ public class ConfiguredModulesStartupTrigger implements StartupTrigger {
             return;
 
         } else {
-            final String target = (String)maybeTarget.get(0);
+            try {
+                final String target = (String) maybeTarget.get(0);
 
-            //start a document
-            final MemTreeBuilder builder = new MemTreeBuilder();
-            builder.startDocument();
-            builder.startElement(new QName("modules-summary"), null);
+                //start a document
+                final MemTreeBuilder builder = new MemTreeBuilder();
+                builder.startDocument();
+                builder.startElement(new QName("modules-summary"), null);
 
-            //get java modules info into document
-            final Configuration existConf = sysBroker.getConfiguration();
-            buildModulesSummary(existConf, builder);
+                //get java modules info into document
+                final Configuration existConf = sysBroker.getConfiguration();
+                buildModulesSummary(existConf, builder);
 
-            //finish document
-            builder.endElement();
-            builder.endDocument();
+                //finish document
+                builder.endElement();
+                builder.endDocument();
 
-            //store document
-            storeDocument(sysBroker, XmldbURI.create(target), builder.getDocument());
+                //store document
+                storeDocument(sysBroker, XmldbURI.create(target), builder.getDocument());
+            } catch (final QName.IllegalQNameException e) {
+                LOG.error(e);
+            }
         }
     }
 
@@ -127,11 +131,15 @@ public class ConfiguredModulesStartupTrigger implements StartupTrigger {
             attribs.addAttribute(null, "class", "class", "string", moduleClass.getName());
         }
 
-        builder.startElement(new QName("module"), attribs);
-        if(description != null) {
-            builder.characters(description);
+        try {
+            builder.startElement(new QName("module"), attribs);
+            if (description != null) {
+                builder.characters(description);
+            }
+            builder.endElement();
+        } catch (final QName.IllegalQNameException e) {
+            LOG.error(e);
         }
-        builder.endElement();
     }
 
     /**

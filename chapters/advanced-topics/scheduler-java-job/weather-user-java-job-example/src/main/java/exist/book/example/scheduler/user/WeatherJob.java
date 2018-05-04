@@ -237,6 +237,9 @@ public class WeatherJob extends UserJavaJob {
         } catch(final DatatypeConfigurationException dce) {
             final String msg = "Unable to configure XML DatatypeFactory: " + dce.getMessage();
             throw new JobException(JobException.JobExceptionAction.JOB_ABORT_THIS, msg);
+        } catch (final QName.IllegalQNameException iqe) {
+            final String msg = "Unable to create QName: " + iqe.getMessage();
+            throw new JobException(JobException.JobExceptionAction.JOB_ABORT_THIS, msg);
         }
     }
 }

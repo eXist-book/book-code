@@ -1,6 +1,6 @@
 package exist.book.example.xmldb.client;
 
-import org.exist.xmldb.CollectionManagementServiceImpl;
+import org.exist.xmldb.EXistCollectionManagementService;
 import org.exist.xmldb.EXistResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +56,7 @@ public class RemoveApp {
                 final String name = nameFromPath(path);
                 if(hasSubCollection(coll, name)) {
                     //remove sub-collection
-                    final CollectionManagementService mgmtService = (CollectionManagementServiceImpl)coll.getService("CollectionManagementService", "1.0");
+                    final CollectionManagementService mgmtService = (EXistCollectionManagementService)coll.getService("CollectionManagementService", "1.0");
                     mgmtService.removeCollection(name);
                 } else {
                     //remove resource

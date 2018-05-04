@@ -102,12 +102,9 @@ public class StatsSystemTask implements SystemTask {
             final String msg = "Unable to configure XML DatatypeFactory: " + dce.getMessage();
             LOG.error(msg, dce);
             throw new EXistException(msg, dce);
-        } catch(final PermissionDeniedException pde) {
-            LOG.error(pde);
-            throw new EXistException(pde);
-        } catch(final StoreException se) {
-            LOG.error(se);
-            throw new EXistException(se);
+        } catch(final QName.IllegalQNameException | PermissionDeniedException | StoreException e) {
+            LOG.error(e);
+            throw new EXistException(e);
         }
     }
 
@@ -119,7 +116,7 @@ public class StatsSystemTask implements SystemTask {
      * @param collUri The absolute database URI of the collection to generate statistics for
      * @param builder The builder to write the statistics output to
      */
-    private void collectStats(final DBBroker broker, final XmldbURI collUri, final MemTreeBuilder builder) throws PermissionDeniedException {
+    private void collectStats(final DBBroker broker, final XmldbURI collUri, final MemTreeBuilder builder) throws QName.IllegalQNameException, PermissionDeniedException {
 
         final Collection collection = broker.getCollection(collUri);
 

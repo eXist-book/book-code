@@ -21,7 +21,7 @@
     <properties>
         <project.build.source>1.8</project.build.source>
         <project.build.target>1.8</project.build.target>
-        <exist.version>3.0</exist.version>
+        <exist.version>4.0.0</exist.version>
     </properties>
     
     <build>
