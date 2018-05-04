@@ -1,4 +1,4 @@
-eXist Book Example Code =======================
+# eXist Book Example Code
 
 [![Build Status](https://travis-ci.org/eXist-book/book-code.png?branch=master)](https://travis-ci.org/eXist-book/book-code)
 [![Java 7](https://img.shields.io/badge/java-7-blue.svg)](http://java.oracle.com)
