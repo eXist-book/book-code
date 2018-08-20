@@ -4,6 +4,7 @@ module namespace ex = "http://example/restxq/2";
 
 import module namespace rest = "http://exquery.org/ns/restxq";
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+declare namespace http = "http://expath.org/ns/http-client";
 
 declare
     %rest:GET
